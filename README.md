@@ -1,4 +1,4 @@
-# Guestbook-frontend 'MERN' Test task
+#React mini chat App 
 
 [Deployed App on Netlify](https://guestbook-mvitalim.netlify.app/)
 
@@ -8,40 +8,26 @@ Author: Vitalii Melnyk
 
 - React with React Hooks
 - React styles & libraries: Material-UI
-- Redux with Redux Hooks
-- Redux-toolkit
 - Formik and Yup
-- axios
-- react-toastify
-- luxon
 __________________________________________________________________
 
 ## Technical Requirements
+1. Create login page:
+    - User type any credentials
+    - After login redirect you to main page.
+2.  Create main page:
+    - Simple page with greeting;
+    - On header should be button, which open “Create channel modal”.
+3.	Create channel modal;
+4.	After creation redirect to created channel page:
+    - Should be page with messages list and simple input field;
+    - Channel id should be unique and showing correct in url path;
+5.	User can send message and get answer by timeout (imitation of another user);
+6.	Logout button should clean all state and redirect to login page.
 
-1. 
-2. Адаптивная верстка
-3. При наведении и других событиях элементы приложения не смещаются
-4. JS валидация формы и уведомления об ошибках
-5. Нельзя отправить визуально пустые поля
-6. Нельзя отправить поле имя с недопустимыми символами (допустимо: латинские буквы, цифры, знак нижнего подчеркивания)
-7. Есть уведомление о том, какая в каком поле ошибка
-8. Уведомление об ошибке скрывается при начале ввода в соответствующее поле
-9. Уведомления об ошибках при появлении не сдвигают другие поля
-10. Использованы регулярные выражения в валидации (например, запрет  на добавление гиперссылок)
-11. Обработаны ответы сервера (сообщение добавлено, не добавлено...)
-12. Отсутствуют лишние перерендеры
-13. Использованы хуки useState, useCallback и прочие
-14. После отправки формы очищается поле текст сообщения
-15. После отправки формы НЕ очищается поле автор сообщения
-16. Использованы переменные окружения
-17. Структура формы отправки сообщения: имя, текст, кнопка
-17. Сообщение отправляется по клику на кнопку и по Ctrl+Enter
-17. Новое сообщение добавляется без перезагрузки страницы
-17. Новое сообщение добавляется в начало (вверх) списка сообщений
-17. Сообщения отсортированы по убыванию даты (новые вверху)
-17. Новое сообщение содержит имя отправителя и текст
-17. После принудительной перезагрузки страницы сообщение не исчезает, не перемещается
-17. При заходе на страницу из другого браузера сообщение остается на месте (хранение данных на сервере)![img.png](img.png)![img_1.png](img_1.png)
+###Technologies to use:
+  - ReactJS (useState, useEffect, useContext, useReducer);
+  - Immutable JS (Application global state should be immutable);
 _________________________________________________________
 
 # Getting Started with Create React App

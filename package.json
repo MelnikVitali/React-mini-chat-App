@@ -4,14 +4,22 @@
   "private": true,
   "author": "Vitalii Melnyk",
   "description": "processica front-end react.js test task",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MelnikVitali/React-mini-chat-App"
+  },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/lab": "^4.0.0-alpha.60",
+    "clsx": "^1.1.1",
     "formik": "^2.2.9",
     "helmet": "^4.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "uuid": "^8.3.2",
     "yup": "^0.32.9"
   },
   "scripts": {

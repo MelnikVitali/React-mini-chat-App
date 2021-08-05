@@ -3,51 +3,36 @@ import { makeStyles } from '@material-ui/core';
 import { pxToRem } from '../../utils/pxToRem';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    paper: {
+    container: {
+        height: '100vh',
         paddingBottom: theme.spacing(14),
+        paddingTop: pxToRem(20),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
-        flex: '1 0 auto',
     },
-
+    title: {
+        alignSelf: 'flex-start',
+        fontWeight: 600,
+        letterSpacing: pxToRem(0.6),
+        [theme.breakpoints.down('xs')]: {
+            fontSize: pxToRem(22),
+            letterSpacing: pxToRem(0)
+        },
+    },
     form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(1),
+        width: '100%',
+        marginTop: theme.spacing(6),
     },
     textField: {
-        margin: theme.spacing(2, 0),
-        position:'relative'
+        margin: theme.spacing(2, 0)
     },
     btn: {
+        float: 'right',
         margin: theme.spacing(2, 0, 2),
-        textTransform: 'capitalize',
-        lineHeight: 1.2,
         borderRadius: pxToRem(30),
-        float: 'right'
-    },
-    label: {
-        position: 'relative',
-        left: pxToRem(-10),
-        fontSize: pxToRem(21),
-        fontWeight: 400,
-    },
-    link: {
-        alignSelf: 'flex-start',
-    },
-    errorLabel: {
-        color: theme.palette.primary
-    },
-    helperText: {
-        position: 'absolute',
-        bottom: pxToRem(5),
-        left: pxToRem(-10)
-
+        textTransform: 'capitalize',
+        lineHeight: 1.2
     }
 }));
 

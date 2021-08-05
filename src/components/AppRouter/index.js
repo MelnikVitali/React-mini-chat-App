@@ -5,18 +5,18 @@ import { privateRoutes, publicRoutes } from '../../routes';
 
 import { CHAT_ROUTE, LOGIN_ROUTE, MAIN_ROUTE } from '../../configs/RoutesUrls';
 
-import { useAuth } from '../../hooks/useAuth';
+import { useAppContext } from '../../context/store';
 
 
 const AppRouter = () => {
-    const {currentUser} = useAuth();
+    const {state: {currentUser}} = useAppContext();
 
     return currentUser ? (
             <Switch >
                 {privateRoutes.map(({path, Component}) =>
                     <Route
                         key={path}
-                        path={path === CHAT_ROUTE ? `${CHAT_ROUTE}/:id`: path}
+                        path={path === CHAT_ROUTE ? `${CHAT_ROUTE}/:id` : path}
                         component={Component}
                         exact={true}
                     />

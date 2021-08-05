@@ -1,21 +1,27 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import { useFormik } from 'formik';
-import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 import {
-    Button, Container, TextField
+    Button, Container, TextField, Typography
 } from '@material-ui/core';
-import useStyles from './styles';
+
 import { CHAT_ROUTE } from '../../configs/RoutesUrls';
+
+import { useAppContext } from '../../context/store';
+import { types } from '../../context/types';
+
 import { validationSchemas } from '../../utils/validationSchemas';
+
+import useStyles from './styles';
 
 const CreateChannelModal = () => {
     const classes = useStyles();
 
-    const idChannel = uuidv4();
+    const history = useHistory();
 
-
+    const {dispatch} = useAppContext();
 
     const {
         handleSubmit, handleChange,
@@ -28,19 +34,19 @@ const CreateChannelModal = () => {
         },
         validationSchema: validationSchemas,
         onSubmit: fields => {
-            const data = {
-                id: idChannel,
-                ...fields
-            };
-            console.log(data);
-            // setCurrentUser(fields);
-            //
-            // sessionStorage.setItem('user', JSON.stringify(fields, null, 2));
+            const idChannel = uuidv4();
+
+            dispatch({type: types.ADD_CHANNEL, id: idChannel, ...fields});
+
+            history.push(`${CHAT_ROUTE}/${idChannel}`);
         }
     });
 
     return (
-        <Container component="main" maxWidth="lg" className={classes.paper} >
+        <Container component="main" maxWidth="lg" className={classes.container} >
+            <Typography component="h1" variant="h4" className={classes.title} >
+                New channel
+            </Typography >
             <form className={classes.form} noValidate onSubmit={handleSubmit} >
                 <TextField
                     error={touched.title && Boolean(errors.title)}
@@ -50,9 +56,7 @@ const CreateChannelModal = () => {
                     className={classes.textField}
                     id="title"
                     label="Channel title..."
-                    helperText={(touched.title && errors.title)
-                        ? errors.title
-                        : ''}
+                    helperText={errors.title ? errors.title : ''}
                     name="title"
                     type="text"
                     autoComplete="off"
@@ -60,7 +64,6 @@ const CreateChannelModal = () => {
                     onBlur={handleBlur}
                     onChange={handleChange}
                 />
-
                 <TextField
                     error={touched.description && Boolean(errors.description)}
                     variant="outlined"
@@ -70,7 +73,7 @@ const CreateChannelModal = () => {
                     className={classes.textField}
                     id="text"
                     label="Channel description"
-                    helperText={touched.description ? errors.description : ''}
+                    helperText={errors.description ? errors.description : ''}
                     name="description"
                     type="text"
                     value={values.description}
@@ -78,19 +81,16 @@ const CreateChannelModal = () => {
                     onChange={handleChange}
 
                 />
-
-                <NavLink to={`${CHAT_ROUTE}/${idChannel}`} className={classes.link} >
-                    <Button
-                        disabled={!isValid}
-                        type="submit"
-                        variant="contained"
-                        color="primary"
-                        size="large"
-                        className={classes.btn}
-                    >
-                        Create
-                    </Button >
-                </NavLink >
+                <Button
+                    disabled={!isValid}
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    className={classes.btn}
+                >
+                    Create
+                </Button >
             </form >
         </Container >
     );

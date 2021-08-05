@@ -3,18 +3,19 @@ import { useFormik } from 'formik';
 
 import {
     Button, Container, FormControl,
-    FormHelperText, InputLabel, OutlinedInput
+    InputLabel, TextField
 } from '@material-ui/core';
 
-import { useAuth } from '../../hooks/useAuth';
+import { useAppContext } from '../../context/store';
+import { types } from '../../context/types';
 
-import useStyles from './styles';
 import { validationSchemaLogin } from '../../utils/validationSchemas';
+import useStyles from './styles';
 
 const Login = () => {
     const classes = useStyles();
 
-    const {setCurrentUser} = useAuth();
+    const {dispatch} = useAppContext();
 
     const {
         handleSubmit, handleChange,
@@ -27,51 +28,51 @@ const Login = () => {
         },
         validationSchema: validationSchemaLogin,
         onSubmit: fields => {
-            setCurrentUser(fields);
+            const currentUser = {
+                nickName: fields.email.split('@')[0],
+                ...fields
+            };
 
-            sessionStorage.setItem('user', JSON.stringify(fields, null, 2));
+            dispatch({type: types.SET_CURRENT_USER, currentUser});
+
+            sessionStorage.setItem('currentUser', JSON.stringify(currentUser.nickName, null, 2));
         }
     });
 
     return (
-        <Container component="main" maxWidth="xs" className={classes.paper} >
+        <Container component="main" maxWidth="xs" className={classes.container} >
             <form className={classes.form} noValidate onSubmit={handleSubmit} >
                 <FormControl variant="outlined" fullWidth className={classes.formControl} >
                     <InputLabel shrink htmlFor="email" className={classes.label} >Email</InputLabel >
-                    <OutlinedInput
+                    <TextField
                         error={touched.email && (Boolean(errors.email))}
                         variant="outlined"
                         required
                         fullWidth
-                        autoComplete='off'
+                        // autoComplete="off"
+                        helperText={errors.email ? errors.email : ''}
                         id="email"
                         name="email"
                         value={values.email || ''}
                         onBlur={handleBlur}
                         onChange={handleChange}
                     />
-                    {touched.email && (Boolean(errors.email))
-                        ? <FormHelperText error className={classes.helperText} >{errors.email}</FormHelperText >
-                        : null}
                 </FormControl >
                 <FormControl variant="outlined" fullWidth className={classes.formControl} >
                     <InputLabel shrink htmlFor="password" className={classes.label} >Password</InputLabel >
-                    <OutlinedInput
-                        error={touched.email && (Boolean(errors.email))}
+                    <TextField
+                        error={touched.password && (Boolean(errors.password))}
                         variant="outlined"
                         required
                         fullWidth
                         id="password"
                         name="password"
-                        autoComplete='off'
+                        // autoComplete="off"
+                        helperText={errors.password ? errors.password : ''}
                         value={values.password || ''}
                         onBlur={handleBlur}
                         onChange={handleChange}
-                        // onFocus={onFocus}
                     />
-                    {touched.password && (Boolean(errors.password))
-                        ? <FormHelperText error className={classes.helperText} >{errors.password}</FormHelperText >
-                        : null}
                 </FormControl >
                 <Button
                     disabled={!isValid}

@@ -3,11 +3,7 @@ import { makeStyles } from '@material-ui/core';
 import { pxToRem } from '../../utils/pxToRem';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        flexWrap: 'wrap',
-    },
-    paper: {
+    container: {
         paddingBottom: theme.spacing(14),
         display: 'flex',
         flexDirection: 'column',
@@ -15,20 +11,12 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'center',
         flex: '1 0 auto',
     },
-
     form: {
-        width: '100%', // Fix IE 11 issue.
+        width: '100%',
         marginTop: theme.spacing(1),
     },
     formControl: {
         paddingBottom: pxToRem(28)
-    },
-    btn: {
-        margin: theme.spacing(0, 0, 2),
-        textTransform: 'capitalize',
-        lineHeight: 1,
-        borderRadius: pxToRem(30),
-        float: 'right'
     },
     label: {
         position: 'relative',
@@ -37,14 +25,12 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 400,
         color: theme.palette.text.primary
     },
-    errorLabel: {
-        color: theme.palette.primary
-    },
-    helperText: {
-        position: 'absolute',
-        bottom: pxToRem(5),
-        left: pxToRem(-10)
-
+    btn: {
+        margin: theme.spacing(0, 0, 2),
+        textTransform: 'capitalize',
+        lineHeight: 1.2,
+        borderRadius: pxToRem(30),
+        float: 'right'
     }
 }));
 

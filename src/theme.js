@@ -1,4 +1,5 @@
 import { createTheme } from '@material-ui/core/styles';
+
 import { pxToRem } from './utils/pxToRem';
 
 const theme = createTheme({
@@ -8,6 +9,9 @@ const theme = createTheme({
             'sans-serif'
         ].join(','),
     },
+    backgroundColorMessageWrap: '#DCDCDC',
+    backgroundColorOwnerWindow: 'rgb(220, 248, 198)',
+    colorTimeChat: 'green',
     overrides: {
         MuiCssBaseline: {
             '@global': {
@@ -52,6 +56,11 @@ const theme = createTheme({
         MuiInputBase: {
             root: {
                 position: 'relative'
+            }
+        },
+        MuiButton: {
+            root: {
+                textTransform: 'none'
             }
         },
     },

@@ -32,10 +32,6 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(2, 0, 2),
         paddingLeft:pxToRem(30),
         paddingRight:pxToRem(30),
-        // borderRadius:pxToRem(18)
-        // borderRadius: pxToRem(30),
-        // textTransform: 'capitalize',
-        // lineHeight: 1.2
     }
 }));
 

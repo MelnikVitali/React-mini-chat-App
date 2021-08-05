@@ -3,8 +3,9 @@ import { makeStyles } from '@material-ui/core';
 import { pxToRem } from '../../utils/pxToRem';
 
 const useStyles = makeStyles((theme) => ({
-
     container: {
+        height: '100%',
+        overflow: 'hidden',
         paddingTop: pxToRem(20),
         flexDirection: 'column'
     },
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
     messagesPaper: {
         flexGrow: 1,
-        height: 'calc(100vh - 258px)',
+        height: 'calc(100vh - 265px)',
         marginTop: 20,
         marginBottom: 20,
         overflowY: 'scroll',
@@ -30,20 +31,21 @@ const useStyles = makeStyles((theme) => ({
     },
     formControl: {
         flexGrow: 1,
-        marginRight: pxToRem(-2)
+        marginRight: pxToRem(0)
     },
     input: {
         borderRadius: `${pxToRem(4)} 0 0 ${pxToRem(4)}`,
         borderRight: '0px',
     },
     btnSend: {
-        paddingLeft: pxToRem(30),
-        paddingRight: pxToRem(30),
+        boxSizing:'border-box',
+        paddingLeft: pxToRem(35),
+        paddingRight: pxToRem(35),
         borderRadius: `0 ${pxToRem(4)}  ${pxToRem(4)} 0`,
-        border: `2px solid ${theme.palette.primary.main}`,
-        '&:hover': {
-            border: `2px solid ${theme.palette.primary.light}`
-        }
+        // border: `2px solid ${theme.palette.primary.main}`,
+        // '&:hover': {
+        //     border: `2px solid ${theme.palette.primary.light}`
+        // }
     }
 }));
 

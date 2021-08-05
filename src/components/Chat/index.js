@@ -94,7 +94,7 @@ const Chat = () => {
                 <Button
                     type="submit"
                     color="primary"
-                    variant={'outlined'}
+                    variant='contained'
                     className={classes.btnSend}
                 >
                     Send

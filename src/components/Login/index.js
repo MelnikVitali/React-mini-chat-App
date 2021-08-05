@@ -49,7 +49,7 @@ const Login = () => {
                         variant="outlined"
                         required
                         fullWidth
-                        // autoComplete="off"
+                        autoComplete="off"
                         helperText={errors.email ? errors.email : ''}
                         id="email"
                         name="email"
@@ -67,7 +67,7 @@ const Login = () => {
                         fullWidth
                         id="password"
                         name="password"
-                        // autoComplete="off"
+                        autoComplete="off"
                         helperText={errors.password ? errors.password : ''}
                         value={values.password || ''}
                         onBlur={handleBlur}

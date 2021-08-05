@@ -21,7 +21,6 @@ const initialState = {
 const mainReducer = (state, action) => {
     switch (action.type) {
         case types.SET_CURRENT_USER:
-            console.log(action);
             return {
                 ...state,
                 currentUser: {
@@ -44,7 +43,6 @@ const mainReducer = (state, action) => {
             return {...initialState};
 
         case types.SEND_MESSAGE:
-
             return {
                 ...state,
                 messages: [

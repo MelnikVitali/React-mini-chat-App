@@ -1,6 +1,6 @@
 # React mini chat App 
 
-[Deployed App on Netlify](https://guestbook-mvitalim.netlify.app/)
+[Deployed App on Netlify](https://react-mini-chat-app.netlify.app/)
 
 Author: Vitalii Melnyk
 
@@ -25,7 +25,7 @@ __________________________________________________________________
 5.	User can send message and get answer by timeout (imitation of another user);
 6.	Logout button should clean all state and redirect to login page.
 
-###Technologies to use:
+### Technologies to use:
   - ReactJS (useState, useEffect, useContext, useReducer);
   - Immutable JS (Application global state should be immutable);
 _________________________________________________________

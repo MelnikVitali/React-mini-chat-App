@@ -34,8 +34,6 @@ const Login = () => {
             };
 
             dispatch({type: types.SET_CURRENT_USER, currentUser});
-
-            sessionStorage.setItem('currentUser', JSON.stringify(currentUser.nickName, null, 2));
         }
     });
 

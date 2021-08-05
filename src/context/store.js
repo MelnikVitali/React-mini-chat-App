@@ -3,8 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { types } from './types';
 
-import { generateTime } from '../utils/generateTime';
 import { dummyMessage } from '../utils/dummyMessages';
+import { DateTime } from 'luxon';
 
 const Context = createContext(null);
 
@@ -14,7 +14,7 @@ const initialState = {
     id: null,
     title: '',
     description: '',
-    currentUser: JSON.parse(sessionStorage.getItem('currentUser')),
+    currentUser: null,
     messages: []
 };
 
@@ -52,7 +52,7 @@ const mainReducer = (state, action) => {
                         currentUserId: state.currentUser.id,
                         nickName: state.currentUser.nickName,
                         text: action.message,
-                        createdTime: generateTime()
+                        createdTime: DateTime.now().toFormat('mm:ss')
                     }
                 ]
             };
@@ -64,6 +64,7 @@ const mainReducer = (state, action) => {
                     ...state.messages,
                     {
                         id: uuidv4(),
+                        createdTime: DateTime.now().toFormat('mm:ss'),
                         ...dummyMessage
                     }
                 ]

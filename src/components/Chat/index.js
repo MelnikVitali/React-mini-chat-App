@@ -45,8 +45,6 @@ const Chat = () => {
     };
 
     const logout = () => {
-        sessionStorage.clear();
-
         dispatch({type: types.REMOVE_CHANNEL});
 
         history.push(LOGIN_ROUTE);

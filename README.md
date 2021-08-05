@@ -1,4 +1,4 @@
-#React mini chat App 
+# React mini chat App 
 
 [Deployed App on Netlify](https://guestbook-mvitalim.netlify.app/)
 

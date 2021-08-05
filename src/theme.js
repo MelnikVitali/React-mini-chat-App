@@ -58,11 +58,23 @@ const theme = createTheme({
                 position: 'relative'
             }
         },
+
         MuiButton: {
             root: {
-                textTransform: 'none'
+                textTransform: 'none',
+                fontSize:pxToRem(16),
+            },
+            outlined:{
+                fontSize:pxToRem(16),
+                border: `2px `,
             }
         },
+        MuiOutlinedInput: {
+            notchedOutline: {
+                top:pxToRem(-4.5) ,
+
+            }
+        }
     },
 });
 

@@ -24,8 +24,9 @@ const useStyles = makeStyles((theme) => ({
     btn: {
         margin: theme.spacing(4, 3, 2),
         alignSelf: 'flex-start',
-        borderRadius: pxToRem(30),
-        lineHeight: 1.3
+        paddingLeft:pxToRem(30),
+        paddingRight:pxToRem(30),
+        borderRadius:pxToRem(18)
     }
 }));
 

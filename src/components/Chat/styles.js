@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     },
     formControl: {
         flexGrow: 1,
-        marginRight: pxToRem(0)
+        marginRight: pxToRem(-2)
     },
     input: {
         borderRadius: `${pxToRem(4)} 0 0 ${pxToRem(4)}`,
@@ -41,11 +41,12 @@ const useStyles = makeStyles((theme) => ({
         boxSizing:'border-box',
         paddingLeft: pxToRem(35),
         paddingRight: pxToRem(35),
+        fontSize:'pxToRem(16) !important',
         borderRadius: `0 ${pxToRem(4)}  ${pxToRem(4)} 0`,
-        // border: `2px solid ${theme.palette.primary.main}`,
-        // '&:hover': {
-        //     border: `2px solid ${theme.palette.primary.light}`
-        // }
+        border: `2px solid ${theme.palette.primary.main}`,
+        '&:hover': {
+            border: `2px solid ${theme.palette.primary.light}`
+        }
     }
 }));
 

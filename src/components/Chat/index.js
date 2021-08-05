@@ -33,7 +33,7 @@ const Chat = () => {
 
         setTimeout(() => {
             dispatch({type: types.SEND_DUMMY_MESSAGE})
-        }, 1500)
+        }, 1000)
         return false;
     };
 
@@ -94,7 +94,7 @@ const Chat = () => {
                 <Button
                     type="submit"
                     color="primary"
-                    variant='contained'
+                    variant='outlined'
                     className={classes.btnSend}
                 >
                     Send

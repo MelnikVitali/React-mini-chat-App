@@ -28,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
     btn: {
         margin: theme.spacing(0, 0, 2),
         textTransform: 'capitalize',
-        lineHeight: 1.2,
-        borderRadius: pxToRem(30),
+        paddingLeft:pxToRem(30),
+        paddingRight:pxToRem(30),
         float: 'right'
     }
 }));

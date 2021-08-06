@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -9,7 +10,7 @@ import {
 import { useAppContext } from '../../context/store';
 import { types } from '../../context/types';
 
-import { LOGIN_ROUTE } from '../../configs/RoutesUrls';
+import { CREATE_CHANNEL_ROUTE, LOGIN_ROUTE } from '../../configs/RoutesUrls';
 
 import Messages from '../Messages';
 
@@ -22,14 +23,13 @@ const Chat = () => {
 
     const history = useHistory();
 
-    const {dispatch} = useAppContext();
-
-    let timerId;
+    const {dispatch, state} = useAppContext();
 
     useEffect(() => {
-        return () => clearTimeout(timerId);
-    }, [dispatch, timerId]);
-
+        if (!state.id) {
+            history.push(CREATE_CHANNEL_ROUTE);
+        }
+    }, []);
 
     const sendMessage = (e) => {
         e.preventDefault();
@@ -40,7 +40,7 @@ const Chat = () => {
 
         setMessage('');
 
-        timerId = setTimeout(() => {
+        setTimeout(() => {
             dispatch({type: types.SEND_DUMMY_MESSAGE})
         }, 1000);
 

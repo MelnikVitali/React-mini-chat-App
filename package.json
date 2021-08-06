@@ -9,12 +9,14 @@
     "type": "git",
     "url": "https://github.com/MelnikVitali/React-mini-chat-App"
   },
+  "homepage": "https://MelnikVitali.github.io/React-mini-chat-App",
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.60",
     "clsx": "^1.1.1",
     "formik": "^2.2.9",
+    "gh-pages": "^3.2.3",
     "luxon": "^2.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -24,6 +26,8 @@
     "yup": "^0.32.9"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

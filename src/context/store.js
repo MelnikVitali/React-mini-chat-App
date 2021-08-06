@@ -5,6 +5,8 @@ import { DateTime } from 'luxon';
 import { types } from './types';
 
 import { dummyMessage } from '../utils/dummyMessages';
+import { getStorage, setStorage } from '../utils/storageHelper';
+import { storageKeys } from '../constants/storageKeys';
 
 const Context = createContext(null);
 
@@ -14,13 +16,15 @@ const initialState = {
     id: null,
     title: '',
     description: '',
-    currentUser: null,
+    currentUser: getStorage(storageKeys.currentUser) || null,
     messages: []
 };
 
 const mainReducer = (state, action) => {
     switch (action.type) {
         case types.SET_CURRENT_USER:
+            setStorage(storageKeys.currentUser, action.currentUser.nickName);
+
             return {
                 ...state,
                 currentUser: {
@@ -40,7 +44,9 @@ const mainReducer = (state, action) => {
             };
 
         case types.REMOVE_CHANNEL:
-            return {...initialState};
+            setStorage(storageKeys.currentUser, null);
+
+            return {...initialState, currentUser: null};
 
         case types.SEND_MESSAGE:
             return {
@@ -52,7 +58,7 @@ const mainReducer = (state, action) => {
                         currentUserId: state.currentUser.id,
                         nickName: state.currentUser.nickName,
                         text: action.message,
-                        createdTime: DateTime.now().toFormat('mm:ss')
+                        createdTime: DateTime.now().toFormat('HH:mm')
                     }
                 ]
             };
@@ -64,7 +70,7 @@ const mainReducer = (state, action) => {
                     ...state.messages,
                     {
                         id: uuidv4(),
-                        createdTime: DateTime.now().toFormat('mm:ss'),
+                        createdTime: DateTime.now().toFormat('HH:mm'),
                         ...dummyMessage
                     }
                 ]

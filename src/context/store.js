@@ -4,9 +4,9 @@ import { DateTime } from 'luxon';
 
 import { types } from './types';
 
-import { dummyMessage } from '../utils/dummyMessages';
 import { getStorage, setStorage } from '../utils/storageHelper';
 import { storageKeys } from '../constants/storageKeys';
+import { dummyMessage } from '../utils/dummyMessage';
 
 const Context = createContext(null);
 
@@ -24,6 +24,7 @@ const mainReducer = (state, action) => {
     switch (action.type) {
         case types.SET_CURRENT_USER:
             setStorage(storageKeys.currentUser, action.currentUser.nickName);
+            setStorage(storageKeys.currentChat, {...state});
 
             return {
                 ...state,
@@ -36,20 +37,25 @@ const mainReducer = (state, action) => {
             };
 
         case types.ADD_CHANNEL:
-            return {
+            const addedChannel = {
                 ...state,
                 id: action.id,
                 title: action.title,
                 description: action.description
             };
 
+            setStorage(storageKeys.currentChat, addedChannel);
+
+            return addedChannel;
+
         case types.REMOVE_CHANNEL:
             setStorage(storageKeys.currentUser, null);
+            setStorage(storageKeys.currentChat, null);
 
             return {...initialState, currentUser: null};
 
         case types.SEND_MESSAGE:
-            return {
+            const sentMessage = {
                 ...state,
                 messages: [
                     ...state.messages,
@@ -63,8 +69,12 @@ const mainReducer = (state, action) => {
                 ]
             };
 
+            setStorage(storageKeys.currentChat, sentMessage);
+
+            return sentMessage;
+
         case types.SEND_DUMMY_MESSAGE:
-            return {
+            const sentDummyMessage = {
                 ...state,
                 messages: [
                     ...state.messages,
@@ -75,6 +85,15 @@ const mainReducer = (state, action) => {
                     }
                 ]
             };
+
+            setStorage(storageKeys.currentChat, sentDummyMessage);
+
+            return sentDummyMessage;
+
+        case types.PAGE_CHAT_RELOAD:
+            const sessionStorageChatState = getStorage(storageKeys.currentChat);
+
+            return {...sessionStorageChatState};
 
         default:
             throw new Error(`Unhandled action type: ${action.type}`);

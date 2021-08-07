@@ -35,7 +35,7 @@ const Messages = () => {
                             variant="subtitle2"
                             className={classes.nickName}
                         >
-                            {state.currentUser}</Typography >
+                            {message.currentUser}</Typography >
                         <Typography variant="body1" >
                             {message.text}
                         </Typography >

@@ -10,7 +10,7 @@ import {
 import { useAppContext } from '../../context/store';
 import { types } from '../../context/types';
 
-import { CREATE_CHANNEL_ROUTE, LOGIN_ROUTE } from '../../configs/RoutesUrls';
+import { LOGIN_ROUTE } from '../../configs/RoutesUrls';
 
 import Messages from '../Messages';
 
@@ -27,7 +27,7 @@ const Chat = () => {
 
     useEffect(() => {
         if (!state.id) {
-            history.push(CREATE_CHANNEL_ROUTE);
+           dispatch({type: types.PAGE_CHAT_RELOAD})
         }
     }, []);
 

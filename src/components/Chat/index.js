@@ -49,7 +49,7 @@ const Chat = () => {
         setMessage('');
 
         timerId = setTimeout(() => {
-            dispatch({type: types.SEND_DUMMY_MESSAGE})
+            dispatch({type: types.SEND_DUMMY_MESSAGE});
         }, 1000);
 
         return false;

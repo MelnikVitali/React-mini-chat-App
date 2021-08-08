@@ -13,6 +13,8 @@ const Messages = () => {
     const {state} = useAppContext();
     const {messages} = state;
 
+    console.log(state);
+
     const messagesEndRef = useRef(null);
 
     const scrollToBottom = () => {
@@ -35,7 +37,7 @@ const Messages = () => {
                             variant="subtitle2"
                             className={classes.nickName}
                         >
-                            {message.currentUser}</Typography >
+                            {message.nickName}</Typography >
                         <Typography variant="body1" >
                             {message.text}
                         </Typography >

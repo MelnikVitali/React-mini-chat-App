@@ -25,10 +25,18 @@ const Chat = () => {
 
     const {dispatch, state} = useAppContext();
 
+    let timerId;
+
     useEffect(() => {
         if (!state.id) {
-           dispatch({type: types.PAGE_CHAT_RELOAD})
+            dispatch({type: types.PAGE_CHAT_RELOAD})
         }
+
+        return () => {
+            if (timerId) {
+                clearTimeout(timerId);
+            }
+        };
     }, []);
 
     const sendMessage = (e) => {
@@ -40,7 +48,7 @@ const Chat = () => {
 
         setMessage('');
 
-        setTimeout(() => {
+        timerId = setTimeout(() => {
             dispatch({type: types.SEND_DUMMY_MESSAGE})
         }, 1000);
 

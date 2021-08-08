@@ -13,8 +13,6 @@ const Messages = () => {
     const {state} = useAppContext();
     const {messages} = state;
 
-    console.log(state);
-
     const messagesEndRef = useRef(null);
 
     const scrollToBottom = () => {

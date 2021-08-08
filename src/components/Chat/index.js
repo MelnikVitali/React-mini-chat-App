@@ -29,7 +29,7 @@ const Chat = () => {
 
     useEffect(() => {
         if (!state.id) {
-            dispatch({type: types.PAGE_CHAT_RELOAD})
+            dispatch({type: types.PAGE_CHAT_RELOAD});
         }
 
         return () => {
